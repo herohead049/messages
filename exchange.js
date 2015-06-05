@@ -57,9 +57,19 @@ mailparser.on("end", function(mail_object){
     console.log("From:", mail_object.from); //[{address:'sender@example.com',name:'Sender Name'}]
     console.log("Subject:", mail_object.subject); // Hello world!
     console.log("Text body:", mail_object.text); // How are you today?
-     console.log("HTML Body:", mail_object.html);
+     //console.log("HTML Body:", mail_object.html);
+    writeFile(mail_object.html, 'message.html');
 });
 
 
+function writeFile(data,fileName) {
+ var fs = require('fs');
+fs.writeFile(fileName, data, function(err) {
+    if(err) {
+        return console.log(err);
+    }
 
+    console.log("The file was saved!");
+});
+}
 
