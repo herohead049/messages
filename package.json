@@ -1,0 +1,14 @@
+{
+    "name": "rabbitmq" ,
+    "version": "0.0.1",
+    "description": "Website for collecting data for backup tasks",
+    "author": "Craig David"
+,
+"dependencies" : {
+    "amqplib": "",
+    "lodash": "",
+    "emailjs" : "",
+    "node-serialize": "",
+    "bluebird": ""
+    }
+}
