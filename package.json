@@ -9,6 +9,9 @@
     "lodash": "",
     "emailjs" : "",
     "node-serialize": "",
-    "bluebird": ""
+    "bluebird": "",
+    "smtp-server": "",
+    "simplesmtp": "",
+    "mailparser": ""
     }
 }
