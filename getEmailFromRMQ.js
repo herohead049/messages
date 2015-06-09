@@ -1,6 +1,6 @@
 var amqp = require('amqplib');
 var fs = require("fs");
-var cdlib = require('../cd_lib');
+var cdlib = require('cdlib');
 var serialize = require('node-serialize');
 //var email = require('emailjs');
 var Promise =  require('bluebird');
