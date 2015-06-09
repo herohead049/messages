@@ -1,17 +1,17 @@
 {
-    "name": "rabbitmq" ,
-    "version": "0.0.1",
-    "description": "Website for collecting data for backup tasks",
-    "author": "Craig David"
-,
-"dependencies" : {
+  "name": "messages",
+  "version": "0.0.1",
+  "description": "Website for collecting data for backup tasks",
+  "author": "Craig David",
+  "dependencies": {
     "amqplib": "",
-    "lodash": "",
-    "emailjs" : "",
-    "node-serialize": "",
     "bluebird": "",
-    "smtp-server": "",
+    "cdlib": "^1.1.3",
+    "emailjs": "",
+    "lodash": "",
+    "mailparser": "",
+    "node-serialize": "",
     "simplesmtp": "",
-    "mailparser": ""
-    }
+    "smtp-server": ""
+  }
 }

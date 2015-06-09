@@ -1,2 +1,2 @@
-# rabbitmqjs
+# messagesjs
 
