@@ -11,9 +11,7 @@
     "emailjs": "",
     "lodash": "",
     "mailparser": "",
-    "node-serialize": "",
-    "simplesmtp": "",
-    "smtp-server": ""
+    "node-serialize": ""
   },
   "license": "MIT"
 }
