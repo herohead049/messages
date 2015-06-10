@@ -1,5 +1,5 @@
 var fs = require("fs");
-var cdlib = require('cd_lib');
+var cdlib = require('cdlib');
 
 
 cdlib.msgEmail.type = "html";

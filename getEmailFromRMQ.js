@@ -2,8 +2,8 @@ var amqp = require('amqplib');
 var fs = require("fs");
 var cdlib = require('cdlib');
 var serialize = require('node-serialize');
-//var email = require('emailjs');
 var Promise =  require('bluebird');
+var colors = require('colors');
 
 var rabbitMQ = {
     'server': cdlib.getRabbitMQAddress(),
@@ -12,9 +12,6 @@ var rabbitMQ = {
     'virtualHost': '/test',
     'queue': 'notifications.email'
 }
-
-
-
 
 var rabbitMQAuthString = 'amqp://' + rabbitMQ.username + ':' + rabbitMQ.password + '@' + rabbitMQ.server + rabbitMQ.virtualHost;
 
@@ -26,48 +23,41 @@ amqp.connect(rabbitMQAuthString).then(function(conn) {
 
     ok = ok.then(function(_qok) {
       return ch.consume(rabbitMQ.queue, function(msg) {
-
           var emailServer = serialize.unserialize(msg.content.toString());
-
           if (emailServer.type === 'html') {
             emailServer.sendHtml(emailServer.htmlData)
             .then(function (status) {
-            console.log("promise sendEmail true");
+            console.log("Email Sent".green);
+
             //console.log(status);
               ch.ack(msg);
           }).catch(function (status) {
             console.log("promise sendEmail false");
+            console.log("promise sendEmail true".red);
+            console.log("Email to " + emailServer.to.red);
+            console.log("Subject " + emailServer.subject.red);
             ch.nack(msg);
             console.log(status);
           })
           } else {
                emailServer.sendText(emailServer.body)
             .then(function (status) {
-            console.log("promise sendEmail true");
+            console.log("promise sendEmail true".green);
+            console.log("Email to " + emailServer.to.green);
+            console.log("Subject " + emailServer.subject.green);
             //console.log(status);
               ch.ack(msg);
           }).catch(function (status) {
-            console.log("promise sendEmail false");
+            console.log("promise sendEmail false".red);
             ch.nack(msg);
             console.log(status);
           })
           }
-
-
-
-
-         /**
-          if (emailServer.sendEmail()) {
-              ch.ack(msg);
-          } else {
-              ch.nack(msg);
-          }
-          **/
       }, {noAck: false});
     });
 
     return ok.then(function(_consumeOk) {
-      console.log(' [*] Waiting for messages. To exit press CTRL+C');
+      console.log(' [*] Waiting for messages. To exit press CTRL+C'.green);
     });
   });
 }).then(null, console.warn);
