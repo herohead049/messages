@@ -28,10 +28,11 @@ amqp.connect(rabbitMQAuthString).then(function (conn) {
                     emailServer.sendHtml(emailServer.htmlData)
                         .then(function (status) {
                             console.log("Email Sent".green);
+                            console.log("Email to " + emailServer.to.green);
+                            console.log("Subject " + emailServer.subject.green);
                             ch.ack(msg);
                         }).catch(function (status) {
                             console.log("promise sendEmail false");
-                            console.log("promise sendEmail true".red);
                             console.log("Email to " + emailServer.to.red);
                             console.log("Subject " + emailServer.subject.red);
                             ch.nack(msg);
