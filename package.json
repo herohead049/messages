@@ -11,6 +11,7 @@
     "emailjs": "",
     "lodash": "",
     "mailparser": "",
+    "moment": "^2.10.3",
     "node-serialize": "",
     "simplesmtp": "^0.3.35"
   },

@@ -4,6 +4,7 @@ var cdlib = require('cdlib');
 var serialize = require('node-serialize');
 var Promise =  require('bluebird');
 var colors = require('colors');
+var moment = require('moment');
 
 var rabbitMQ = {
     'server': cdlib.getRabbitMQAddress(),
@@ -24,7 +25,7 @@ amqp.connect(rabbitMQAuthString).then(function (conn) {
         ok = ok.then(function (_qok) {
             return ch.consume(rabbitMQ.queue, function(msg) {
                 var emailServer = JSON.parse(msg.content);
-                console.log(emailServer.to, emailServer.from, emailServer.subject);
+                console.log(moment().format(), emailServer.to, emailServer.from, emailServer.subject);
                 
                 if (emailServer.type === 'html') {
                     cdlib.sendEmailHtml(emailServer);
